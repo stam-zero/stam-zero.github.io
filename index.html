@@ -93,7 +93,7 @@
             <span class="author-block">
               <a href="https://keunhong.com">Masud An Nur Islam Fahim</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Nazmus Saqib</a><sup>2</sup>2</span>
+              <a href="https://utkarshsinha.com">Nazmus Saqib</a><sup>2</sup>,</span>
             <span class="author-block">
               <a href="https://jonbarron.info">Jani Boutellier</a><sup>*</sup>,
             </span>
@@ -250,27 +250,20 @@
             deforming scene using photos/videos captured casually from mobile phones.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            Diffusion models are capable of delivering many zero-shot applications in addition to stunning image generation,
+            and style transfer is a popular choice among those applications. In contrast to classical style transfer studies,
+            recent methods harness diffusion models, where decoupling between the source image and content image returns the 
+            stylized image after denoising steps. To further upscale the stylization performance, researchers integrate 
+            prompt guidance, adapters, or ControlNet within their style transfer pipeline. However, the style of an image is
+            always subjective, and it is common for zero-shot diffusion stylization approaches to deliver undesired performances. 
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            For instance, the tradeoff between style injection and content preservation often poses a great challenge, and the resultant
+            stylized image deviates far away from the content image. We address both issues by integrating two efficient contributions: 
+            a) preserving content via dividing and aggregating the self-attention and b) maintaining the impact of style through modulating
+            the attention components. Our approach can provide aesthetically appealing yet content-preserving style transfer performance 
+            through the combined effort of these contributions. Through extensive experimental studies, we validated our approach's qualitative
+            and quantitative performance, and our approach shows a higher benchmark than the concurrent studies.
           </p>
         </div>
       </div>
