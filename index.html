@@ -181,43 +181,40 @@
     }
   </style>
   
- <style>
-    .carousel {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-      overflow: hidden;
-    }
-    .carousel-images {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-    .carousel-images img {
-      width: 100%;
-    }
-    .carousel-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-    .carousel-control-prev, .carousel-control-next {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-    }
- </style>
+<style>
+  .carousel-container {
+    position: relative;
+    max-width: 100%; /* Full width */
+    overflow: hidden; /* Hide overflow to show only one image at a time */
+  }
 
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+  }
 
+  .carousel-images img {
+    width: 100%; /* Each image will take 100% width of the container */
+    height: auto; /* Maintain aspect ratio */
+  }
 
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
 
+  .carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+  }
+</style>
 
-
-  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
@@ -762,32 +759,32 @@
 
 <section class="section">
     <div class="container is-max-desktop">
-
-      <div class="columns is-centered">
-
-      </div>
-      <!--/ Avatar Creation. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-            <h2 class="title is-3">Image driven stylization</h2>
-            <div class="carousel-images">
-                <img src="static/images/image_driven3.png" alt="Image 1">
-                <img src="static/images/image_driven1.png" alt="Image 2">
-                <img src="static/images/image_driven2.png" alt="Image 3">
-                <img src="static/images/image_driven4.png" alt="Image 4">
-            </div>
-            <br>
-            <span class="dnerf">STAM's</span> image-driven stylization approach. In different visual contents experienced well-structured composition:
-            successfully retents the content details while effectively
-            transferring the color palette and texture from the style image.
-              <br />
-            <div class="carousel-controls">
-              <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel1')">&#10094;</span>
-              <span class="carousel-control-next" onclick="moveSlide(1, 'carousel1')">&#10095;</span>
+        <div class="columns is-centered">
+        </div>
+        <!-- Avatar Creation -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3">Image driven stylization</h2>
+                <!-- Carousel Container -->
+                <div class="carousel-container">
+                    <div class="carousel-images">
+                        <img src="static/images/image_driven3.png" alt="Image 1">
+                        <img src="static/images/image_driven1.png" alt="Image 2">
+                        <img src="static/images/image_driven2.png" alt="Image 3">
+                        <img src="static/images/image_driven4.png" alt="Image 4">
+                    </div>
+                    <div class="carousel-controls">
+                        <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel1')">&#10094;</span>
+                        <span class="carousel-control-next" onclick="moveSlide(1, 'carousel1')">&#10095;</span>
+                    </div>
+                </div>
+                <br>
+                <span class="dnerf">STAM's</span> image-driven stylization approach. In different visual contents experienced well-structured composition:
+                successfully retents the content details while effectively transferring the color palette and texture from the style image.
             </div>
         </div>
-      </div>
-  </section>
+    </div>
+</section>
 
           
    <!-- Second Carousel -->
@@ -832,35 +829,18 @@
 </section>
   
 <script>
-    // Initialize the current index for each carousel
-    let currentIndex1 = 0;
-    let currentIndex2 = 0;
-    let currentIndex3 = 0;
-  
-    // Function to move the slide for the specific carousel
-    function moveSlide(direction, carouselId) {
-      const carousel = document.getElementById(carouselId);
-      const slides = carousel.querySelector('.carousel-images');
-      const totalSlides = slides.children.length;
-  
-    // Determine which carousel's current index to update
-    let currentIndex = carouselId === 'carousel1' ? currentIndex1 :
-                       carouselId === 'carousel2' ? currentIndex2 :
-                       currentIndex3;
-  
-      // Update the index with circular behavior
-      currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-      const offset = -currentIndex * 100;
-      slides.style.transform = `translateX(${offset}%)`;
-  
-      // Save the updated index
-    if (carouselId === 'carousel1') {
-      currentIndex1 = currentIndex;
-    } else if (carouselId === 'carousel2') {
-      currentIndex2 = currentIndex;
-    } else {
-      currentIndex3 = currentIndex;
-    }
+  let currentIndex = 0; // Starting index for the carousel
+
+  function moveSlide(direction, carouselId) {
+    const carousel = document.querySelector(`#${carouselId} .carousel-images`);
+    const totalSlides = carousel.children.length;
+
+    // Update the index with circular behavior
+    currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+
+    // Calculate the offset to move the images
+    const offset = -currentIndex * 100; // Move each image by 100% width
+    carousel.style.transform = `translateX(${offset}%)`;
   }
 </script>
 
