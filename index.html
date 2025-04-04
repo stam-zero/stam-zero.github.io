@@ -181,51 +181,43 @@
     }
   </style>
   
-<style>
-  .section-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust grid columns */
-    gap: 20px; /* Spacing between grid items */
-    padding: 0 20px;
-  }
-
-  .carousel-container {
-    width: 100%;
-    max-width: 900px; /* Adjust to increase the size */
-    margin: auto;
-  }
-
-  .carousel-images {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-
-  .carousel-images img {
-    width: 100%;
-    height: auto;
-  }
-
-  .carousel-controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-
-  .carousel-control-prev, .carousel-control-next {
-    cursor: pointer;
-    font-size: 24px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-  }
-</style>
+ <style>
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-images img {
+      width: 100%;
+    }
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-control-prev, .carousel-control-next {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+ </style>
 
 
+
+
+
+
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
@@ -768,24 +760,35 @@
   </section>
 
 
-<section class="hero is-light is-small">
-  <!-- Image driven stylization Section -->
-  <div class="section-title">
-    <h2>Image driven stylization</h2>
-  </div>
-  <div class="carousel-container">
-    <div class="carousel-images">
-      <img src="static/images/image_driven3.png" alt="Image 1">
-      <img src="static/images/image_driven1.png" alt="Image 1">
-      <img src="static/images/image_driven2.png" alt="Image 1">
-      <img src="static/images/image_driven4.png" alt="Image 1">
-    </div>
-    <div class="carousel-controls">
-      <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel2')">&#10094;</span>
-      <span class="carousel-control-next" onclick="moveSlide(1, 'carousel2')">&#10095;</span>
-    </div>
-  </div>
-</section>
+<section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+
+      </div>
+      <!--/ Avatar Creation. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+            <h2 class="title is-3">Image driven stylization</h2>
+            <div class="carousel-images">
+                <img src="static/images/image_driven3.png" alt="Image 1">
+                <img src="static/images/image_driven1.png" alt="Image 2">
+                <img src="static/images/image_driven2.png" alt="Image 3">
+                <img src="static/images/image_driven4.png" alt="Image 4">
+            </div>
+            <br>
+            <span class="dnerf">STAM's</span> image-driven stylization approach. In different visual contents experienced well-structured composition:
+            successfully retents the content details while effectively
+            transferring the color palette and texture from the style image.
+              <br />
+            <div class="carousel-controls">
+              <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel1')">&#10094;</span>
+              <span class="carousel-control-next" onclick="moveSlide(1, 'carousel1')">&#10095;</span>
+            </div>
+        </div>
+      </div>
+  </section>
+
           
    <!-- Second Carousel -->
  <section class="hero is-light is-small">  
