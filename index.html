@@ -181,21 +181,26 @@
     }
   </style>
   
- <style>
+  <style>
     .carousel {
       position: relative;
-      width: 100%;
-      max-width: 900px;
+      width: 100%;               /* Ensure the carousel takes full width */
+      max-width: 1200px;         /* Adjust the max-width to make it larger */
       margin: auto;
-      overflow: hidden;
+      overflow: hidden;          /* Hide overflow to only show one image at a time */
     }
+
     .carousel-images {
       display: flex;
       transition: transform 0.5s ease;
     }
+
     .carousel-images img {
-      width: 100%;
+      width: 100%;               /* Ensure images take up full width of the container */
+      height: auto;              /* Maintain the aspect ratio */
+      object-fit: cover;         /* Ensure images cover the area of the container */
     }
+
     .carousel-controls {
       position: absolute;
       top: 50%;
@@ -204,13 +209,21 @@
       justify-content: space-between;
       transform: translateY(-50%);
     }
+
     .carousel-control-prev, .carousel-control-next {
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.5); /* Dark background for visibility */
       color: white;
       padding: 10px;
       cursor: pointer;
+      border-radius: 50%;         /* Optional: to make the buttons round */
     }
- </style>
+
+    /* Optionally, add hover effect to the navigation buttons */
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+</style>
+
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -236,10 +249,10 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="static/images/favicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script> 
   <!--<script src="./static/js/bulma-carousel.min.js"></script> -->
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
@@ -258,12 +271,11 @@
             <span class="author-block">
               <a href="https://saqibnazmus@github.io">Nazmus Saqib</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jani Boutellier</a><sup>*</sup>,
-            </span>
+              <a href="https://jonbarron.info">Jani Boutellier</a><sup>*</sup>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Vaasa, Finland</span>
+            <span class="author-block"><sup>1,*</sup>University of Vaasa, Finland, </span>
             <span class="author-block"><sup>2</sup>Jeju National University, Korea</span>
           </div>
 
@@ -276,7 +288,7 @@
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper(Coming Soon)</span>
                 </a>
               </span>
               <span class="link-block">
@@ -286,16 +298,6 @@
                       <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -308,14 +310,6 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
                   </a>
             </div>
 
@@ -335,7 +329,7 @@
             style="width: 100%;">
         </div>
         <h2 class="subtitle has-text-centered">
-          <span class="dnerf">Fig: STAM</span> performs spontaneous text-driven stylization based on various text prompts, ensuring proper content preservation 
+          <span class="dnerf">STAM</span> performs spontaneous text-driven stylization based on various text prompts, ensuring proper content preservation 
           without the need for fine-tuning, IP-adapter, or ControlNets, by utilizing pretrained stable diffusion models.
         </h2>
       </div>
@@ -387,13 +381,13 @@
           <h2 class="title is-3">Method overview</h2>
           <!-- Figure here -->
           <div class="columns is-vcentered interpolation-panel">
-            <img src="static/main_framework.png" alt="Method Overview" height="100%">
+            <img class="links-cover" src="static/main_framework.png" alt="Method Overview", width="100%">
           </div>
           <!-- Text below the figure -->
-          <span class="dnerf">STAM's</span> style transfer approach. On the rightmost part of the diagram, we display three sub-blocks, 
+          <h4 class="subtitle has-text-justified"> <span class="dnerf">STAM's</span> style transfer approach. On the rightmost part of the diagram, we display three sub-blocks, 
           where we briefly display the underlying mechanics of the proposed aggregated attention, attention swapping, and modulation of the attention components. 
-          Note that we do not show the full details of the attention modulation here for brevity,
-           and we denote $Q_s$ as $Q_s^*$ to indicate the completion of the appropriate transformation.
+          Note that we do not show the full details of the attention modulation here for brevity,
+          and we denote Q<sub>s</sub> as Q<sub>s</sub><sup>*</sup> to indicate the completion of the appropriate transformation.</h4>
           <br />
         </div>
       </div>
@@ -754,40 +748,46 @@
   </section>
 
 
-<section class="section">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered">
-        </div>
-        <!-- Avatar Creation -->
-        <div class="columns is-centered">
-            <div class="column is-full-width">
-                <h2 class="title is-3">Image driven stylization</h2>
-                <!-- Carousel Container -->
-                <div class="carousel-container">
-                    <div class="carousel-images">
-                        <img src="static/images/image_driven3.png" alt="Image 1">
-                        <img src="static/images/image_driven1.png" alt="Image 2">
-                        <img src="static/images/image_driven2.png" alt="Image 3">
-                        <img src="static/images/image_driven4.png" alt="Image 4">
-                    </div>
-                    <div class="carousel-controls">
-                        <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel1')">&#10094;</span>
-                        <span class="carousel-control-next" onclick="moveSlide(1, 'carousel1')">&#10095;</span>
-                    </div>
-                </div>
-                <br>
-                <span class="dnerf">STAM's</span> image-driven stylization approach. In different visual contents experienced well-structured composition:
-                successfully retents the content details while effectively transferring the color palette and texture from the style image.
-            </div>
-        </div>
+
+
+<!-- First Carousel -->
+<section class="section"> 
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
     </div>
+    <div class="carousel" id="carousel1">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Image driven stylization</h2>
+        <div class="carousel-images">
+          <img src="static/images/image_driven3.png" alt="Image 1">
+          <img src="static/images/image_driven1.png" alt="Image 2">
+          <img src="static/images/image_driven2.png" alt="Image 3">
+          <img src="static/images/image_driven4.png" alt="Image 4">
+        </div>
+        <br>
+          <span class="dnerf">STAM's</span> image-driven stylization approach. In different visual contents experienced well-structured composition:
+          successfully retents the content details while effectively transferring the color palette and texture from the style image.
+        <br/>
+        <div class="carousel-controls">
+          <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel1')">&#10094;</span>
+          <span class="carousel-control-next" onclick="moveSlide(1, 'carousel1')">&#10095;</span>
+        </div>
+      </div>
+    </div>
+  </div> 
 </section>
+
+
+
 
           
    <!-- Second Carousel -->
- <section class="hero is-light is-small">  
+<section class="section"> 
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+    </div>
     <div class="carousel" id="carousel2">
-      <div class="column is-four-fifths">
+      <div class="column is-full-width">
         <h2 class="title is-3">Text-driven style alignment</h2>
         <div class="carousel-images">
           <img src="static/images/ablation_munch.png" alt="Toy Car">
@@ -795,36 +795,48 @@
           <img src="static/images/starry_night.png" alt="Toy Car">
         </div>
         <br>
-        <span class="dnerf">STAM's</span> can also utilize the T2I models for generating images with identical styles. For a given prompt, our approach can direct the given diffusion model 
-        to generate images fashioned by the input style prompt.
-          <br />
+            <span class="dnerf">STAM's</span> can also utilize the T2I models for generating images with identical styles. For a given prompt, our approach can direct the given diffusion model 
+            to generate images fashioned by the input style prompt.
+        <br/>
         <div class="carousel-controls">
           <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel2')">&#10094;</span>
           <span class="carousel-control-next" onclick="moveSlide(1, 'carousel2')">&#10095;</span>
         </div>
       </div>
     </div>
+  </div> 
 </section>
 
- <section class="hero is-light is-small">           
-  <div class="carousel" id="carousel3">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3">Stylization vs Content preservation</h2>
-      <div class="carousel-images">
-        <img src="static/images/stylevscontent_1.png" alt="Toy Car">
-        <img src="static/images/stylevscontent_2.png" alt="Teddy Bear">
+
+
+  <!-- Second Carousel -->
+<section class="section"> 
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
       </div>
-      <br>
-        <span class="dnerf">STAM's</span> performance of content preservation vs stylization compared to other methods.  
-     <br />
-      <div class="carousel-controls">
-        <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel3')">&#10094;</span>
-        <span class="carousel-control-next" onclick="moveSlide(1, 'carousel3')">&#10095;</span>
+      <div class="carousel" id="carousel3">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Style vs Content</h2>
+          <div class="carousel-images">
+            <img src="static/images/stylevscontent_1.png" alt="Toy Car">
+            <img src="static/images/stylevscontent_2.png" alt="Teddy Bear">
+          </div>
+          <br>
+            <span class="dnerf">STAM's</span> performance of content preservation vs stylization compared to other methods. 
+          <br/>
+          <div class="carousel-controls">
+            <span class="carousel-control-prev" onclick="moveSlide(-1, 'carousel3')">&#10094;</span>
+            <span class="carousel-control-next" onclick="moveSlide(1, 'carousel3')">&#10095;</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </div> 
+  </section>
   
+
+
+
+<!-- Javascript code for corousal -->  
 <script>
     // Initialize the current index for each carousel
     let currentIndex1 = 0;
@@ -881,7 +893,7 @@
           <i class="fab fa-github"></i>
         </a>
       </div>
-      <div class="columns is-centered">
+      <div class="columns has-text-centered">
         <div class="column is-8">
           <div class="content">
             <p>
