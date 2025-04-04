@@ -181,39 +181,36 @@
     }
   </style>
   
-<style>
-  .carousel-container {
-    position: relative;
-    max-width: 100%; /* Full width */
-    overflow: hidden; /* Hide overflow to show only one image at a time */
-  }
-
-  .carousel-images {
-    display: flex;
-    transition: transform 0.5s ease; /* Smooth transition for sliding */
-  }
-
-  .carousel-images img {
-    width: 100%; /* Each image will take 100% width of the container */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  .carousel-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-  }
-
-  .carousel-control-prev, .carousel-control-next {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-  }
-</style>
+ <style>
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-images img {
+      width: 100%;
+    }
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+    .carousel-control-prev, .carousel-control-next {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+ </style>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -829,21 +826,37 @@
 </section>
   
 <script>
-  let currentIndex = 0; // Starting index for the carousel
-
-  function moveSlide(direction, carouselId) {
-    const carousel = document.querySelector(`#${carouselId} .carousel-images`);
-    const totalSlides = carousel.children.length;
-
-    // Update the index with circular behavior
-    currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-
-    // Calculate the offset to move the images
-    const offset = -currentIndex * 100; // Move each image by 100% width
-    carousel.style.transform = `translateX(${offset}%)`;
+    // Initialize the current index for each carousel
+    let currentIndex1 = 0;
+    let currentIndex2 = 0;
+    let currentIndex3 = 0;
+  
+    // Function to move the slide for the specific carousel
+    function moveSlide(direction, carouselId) {
+      const carousel = document.getElementById(carouselId);
+      const slides = carousel.querySelector('.carousel-images');
+      const totalSlides = slides.children.length;
+  
+    // Determine which carousel's current index to update
+    let currentIndex = carouselId === 'carousel1' ? currentIndex1 :
+                       carouselId === 'carousel2' ? currentIndex2 :
+                       currentIndex3;
+  
+      // Update the index with circular behavior
+      currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+      const offset = -currentIndex * 100;
+      slides.style.transform = `translateX(${offset}%)`;
+  
+      // Save the updated index
+    if (carouselId === 'carousel1') {
+      currentIndex1 = currentIndex;
+    } else if (carouselId === 'carousel2') {
+      currentIndex2 = currentIndex;
+    } else {
+      currentIndex3 = currentIndex;
+    }
   }
-</script>
-
+  </script>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
